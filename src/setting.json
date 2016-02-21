@@ -1,0 +1,12 @@
+{
+  "group":"${グループ名}",
+  "publish_key":"${PubNubのpublish key}",
+  "subscribe_key":"${PubNubのsubscribe key}",
+  "id":"${ワークスペースのID}",
+  "floor":"${ワークスペースのフロア名}",
+  "name":"${ワークスペース名}",
+  "duration":${センサーを確認する間隔 int 秒},
+  "GPIO":{
+    "sensor_pin":${センサーが繋がっているGPIOのPIN番号 int}
+  }
+}
