@@ -7,7 +7,7 @@ class Sensor:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self._setting["sensor_pin"], GPIO.IN)
 
-    def get_status():
+    def get_status(self):
         inputValue = GPIO.input(self._setting["sensor_pin"])
         if (inputValue == True):
             return 1
