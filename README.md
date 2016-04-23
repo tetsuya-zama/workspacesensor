@@ -53,18 +53,35 @@ duration=>1 , on_resistance=>1, off_resistance=>10と設定した場合、
 
 という挙動になる。
 
+### 複数センサーの取り扱いについて
+GPIOに"and"もしくは"or"を設定することで、複数センサーの合議で判断するよう設定できる。
+
+例:GPIOの12番、13番のいずれかが"1"の場合(or)、"1"と見做す
+```json
+{
+  "group":"${グループ名}",
+  "publish_key":"${PubNubのpublish key}",
+  "subscribe_key":"${PubNubのsubscribe key}",
+  "id":"${ワークスペースのID}",
+  "floor":"${ワークスペースのフロア名}",
+  "name":"${ワークスペース名}",
+  "duration":${センサーを確認する間隔 int 秒},
+  "on_resistance":${0から1への変わりにくさ（抵抗値） 1以上のint},
+  "off_resistance":${1から0への変わりにくさ（抵抗値） 1以上のint},
+  "GPIO":{
+    "or":[
+    	{"sensor_pin":12},
+    	{"sensor_pin":13}
+    ]
+  }
+}
+```
+
 ## スタブモードからGPIO使用モードに切り替える
 
-src/workspacesensor.pyの6行目を編集
+~~src/workspacesensor.pyの6行目を編集~~
 
-編集前（スタブモード）
-```python
-import sensorstub as sensor
-```
-編集後（GPIO使用モード）
-```python
-import sensor
-```
+*変更　sensor_pinを-1に設定するとスタブモード。ソースの修正不要*
 
 ## 開始と終了
 

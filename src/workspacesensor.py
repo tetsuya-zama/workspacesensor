@@ -3,7 +3,7 @@ import json
 import os
 import sys
 import time
-import sensorstub as sensor
+import circuit
 from pubnub import Pubnub
 from resistance import Resistance
 
@@ -14,8 +14,8 @@ class WorkspaceSensor:
         with open(setting_file_path) as f:
             self._setting = json.load(f,"utf-8")
 
-        self._sensor = sensor.Sensor(self._setting["GPIO"])
-        self._current_status = self._sensor.get_status()
+        self._circuit = circuit.parse(self._setting["GPIO"])
+        self._current_status = self._circuit.get_status()
 
         self._on_resistance = Resistance(self._setting["on_resistance"],1,self._update_status)
         self._off_resistance = Resistance(self._setting["off_registance"],0,self._update_status)
@@ -25,7 +25,7 @@ class WorkspaceSensor:
 
     def run(self):
         while True:
-            sensor_status = self._sensor.get_status()
+            sensor_status = self._circuit.get_status()
             if(sensor_status == 1):
                 self._on_resistance.load()
                 self._off_resistance.clear()
