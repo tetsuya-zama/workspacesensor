@@ -1,2 +1,3 @@
 #!/bin/sh
-python workspacesensor.py &
+D=`dirname $0`
+python $D/workspacesensor.py &
