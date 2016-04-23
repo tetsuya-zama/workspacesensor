@@ -26,7 +26,6 @@ class WorkspaceSensor:
     def run(self):
         while True:
             sensor_status = self._sensor.get_status()
-            print sensor_status
             if(sensor_status == 1):
                 self._on_resistance.load()
                 self._off_resistance.clear()
