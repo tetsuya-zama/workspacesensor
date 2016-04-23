@@ -6,6 +6,8 @@
   "floor":"${ワークスペースのフロア名}",
   "name":"${ワークスペース名}",
   "duration":${センサーを確認する間隔 int 秒},
+  "on_resistance":${0から1への変わりにくさ（抵抗値） 1以上のint},
+  "off_resistance":${1から0への変わりにくさ（抵抗値） 1以上のint},
   "GPIO":{
     "sensor_pin":${センサーが繋がっているGPIOのPIN番号 int}
   }
