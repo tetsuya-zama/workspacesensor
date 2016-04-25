@@ -18,7 +18,7 @@ class WorkspaceSensor:
         self._current_status = self._circuit.get_status()
 
         self._on_resistance = Resistance(self._setting["on_resistance"],1,self._update_status)
-        self._off_resistance = Resistance(self._setting["off_registance"],0,self._update_status)
+        self._off_resistance = Resistance(self._setting["off_resistance"],0,self._update_status)
 
         self._pubnub = Pubnub(publish_key=self._setting["publish_key"], subscribe_key=self._setting["subscribe_key"])
         self._pubnub.subscribe(channels='plzcast_' + self._setting["group"], callback=self._callback_plzcast,connect=self._callback_connect, reconnect=self._callback_connect)
